@@ -33,6 +33,9 @@
 
   How to enable C++/WinRT support.
     <MileProjectEnableCppWinRTSupport>true</MileProjectEnableCppWinRTSupport>
+
+  How to use LLVM clang-cl toolset instead of MSVC toolset.
+    <MileProjectUseClangCLToolset>true</MileProjectUseClangCLToolset>
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
@@ -76,6 +79,7 @@
     <ConfigurationType Condition="'$(MileProjectType)'=='DynamicLibrary'">DynamicLibrary</ConfigurationType>
     <ConfigurationType Condition="'$(MileProjectType)'=='StaticLibrary'">StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset Condition="'$(MileProjectUseClangCLToolset)' == 'true'">ClangCL</PlatformToolset>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
     <CharacterSet>Unicode</CharacterSet>
     <UseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</UseDebugLibraries>
