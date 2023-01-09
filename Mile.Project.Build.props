@@ -17,7 +17,7 @@
     <MSBuildProjectExtensionsPath>$(MileProjectObjectsPath)$(Configuration)\$(MSBuildProjectName)\obj\</MSBuildProjectExtensionsPath>
     <AppxPackageDir>$(MileProjectBinariesPath)AppPackages\$(ProjectName)\</AppxPackageDir>
   </PropertyGroup>
-    <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
     <OutDir>$(MileProjectBinariesPath)$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(MileProjectObjectsPath)$(Configuration)\$(MSBuildProjectName)\$(Platform)\</IntDir>
     <GeneratedFilesDir>$(IntDir)Generated Files\</GeneratedFilesDir>
