@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
   PROJECT:   Mouri Internal Library Essentials
-  FILE:      Mile.Project.Directory.Build.props
+  FILE:      Mile.Project.Build.props
   PURPOSE:   Global settings for Visual Studio C++ Project
 
   LICENSE:   The MIT License

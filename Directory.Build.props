@@ -9,5 +9,5 @@
   DEVELOPER: Mouri_Naruto (Mouri_Naruto AT Outlook.com)
 -->
 <Project>
-  <Import Project="$(MSBuildThisFileDirectory)Mile.Project.Windows\Mile.Project.Directory.Build.props" />
+  <Import Project="$(MSBuildThisFileDirectory)Mile.Project.Windows\Mile.Project.Build.props" />
 </Project>
