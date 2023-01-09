@@ -10,7 +10,7 @@
 -->
 <Project>
   <PropertyGroup>
-    <MileProjectOutputPath>$(MSBuildThisFileDirectory)Output\</MileProjectOutputPath>
+    <MileProjectOutputPath>$(MSBuildThisFileDirectory)..\Output\</MileProjectOutputPath>
     <MileProjectBinariesPath>$(MileProjectOutputPath)Binaries\</MileProjectBinariesPath>
     <MileProjectObjectsPath>$(MileProjectOutputPath)Objects\</MileProjectObjectsPath>
     <GenerateProjectSpecificOutputFolder>False</GenerateProjectSpecificOutputFolder>
