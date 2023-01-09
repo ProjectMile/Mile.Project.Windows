@@ -9,16 +9,24 @@
   DEVELOPER: Mouri_Naruto (Mouri_Naruto AT Outlook.com)
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup Label="ProjectConfigurations">
+  <ItemGroup Label="ProjectConfigurations" Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
-      <Platform>x86</Platform>
-      <Platform Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">Win32</Platform>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup Label="ProjectConfigurations" Condition="'$(MSBuildProjectExtension)' != '.vcxproj'">
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
       <Platform>x86</Platform>
-      <Platform Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
     </ProjectConfiguration>
   </ItemGroup>
 </Project>
