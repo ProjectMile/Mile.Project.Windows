@@ -1,6 +1,6 @@
 @rem 
 @rem PROJECT:   Mouri Internal Library Essentials
-@rem FILE:      Mile.Project.InitializeVisualStudioEnvironment.cmd
+@rem FILE:      InitializeVisualStudioEnvironment.cmd
 @rem PURPOSE:   Initialize Visual Studio environment script
 @rem 
 @rem LICENSE:   The MIT License
