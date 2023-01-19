@@ -25,8 +25,15 @@
     <MileProjectManifestFile>C:\Folder\Manifest.manifest</MileProjectManifestFile>
 
   How to enable the version information support.
-    Copy Mile.Project.Properties.Template.h to the project folder and rename it
-    to Mile.Project.Properties.h.
+    <MileProjectUseProjectProperties>true</MileProjectUseProjectProperties>
+    <MileProjectCompanyName>TODO: Company Name</MileProjectCompanyName>
+    <MileProjectFileDescription>TODO: File Description</MileProjectFileDescription>
+    <MileProjectInternalName>$(TargetName)</MileProjectInternalName>
+    <MileProjectLegalCopyright>© TODO: Company Name. All rights reserved.</MileProjectLegalCopyright>
+    <MileProjectOriginalFilename>$(TargetName)$(TargetExt)</MileProjectOriginalFilename>
+    <MileProjectProductName>$(TargetName)</MileProjectProductName>
+    <MileProjectVersion>1.0.0.1</MileProjectVersion>
+    <MileProjectVersionTag>Preview 1</MileProjectVersionTag>
   
   How to enable VC-LTL support.
     <MileProjectEnableVCLTLSupport>true</MileProjectEnableVCLTLSupport>
@@ -44,6 +51,7 @@
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <CleanImport>true</CleanImport>
     <MileProjectBuildGuid>$([System.Guid]::NewGuid())</MileProjectBuildGuid>
+    <MileProjectPreprocessorDefinitions></MileProjectPreprocessorDefinitions>
   </PropertyGroup>
   <PropertyGroup Label="Globals" Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">
     <CppWinRTOptimized>true</CppWinRTOptimized>
@@ -74,6 +82,21 @@
     -->
     <_VC_Target_Library_Platform>Desktop</_VC_Target_Library_Platform>
   </PropertyGroup>
+  <PropertyGroup Label="Globals" Condition="'$(MileProjectUseProjectProperties)' == 'true'">
+    <MileProjectCompanyName Condition="'$(MileProjectCompanyName)'==''">TODO: Company Name</MileProjectCompanyName>
+    <MileProjectFileDescription Condition="'$(MileProjectFileDescription)'==''">TODO: File Description</MileProjectFileDescription>
+    <MileProjectInternalName Condition="'$(MileProjectInternalName)'==''">$(TargetName)</MileProjectInternalName>
+    <MileProjectLegalCopyright Condition="'$(MileProjectLegalCopyright)'==''">© TODO: Company Name. All rights reserved.</MileProjectLegalCopyright>
+    <MileProjectOriginalFilename Condition="'$(MileProjectOriginalFilename)'==''">$(TargetName)$(TargetExt)</MileProjectOriginalFilename>
+    <MileProjectProductName Condition="'$(MileProjectProductName)'==''">$(TargetName)</MileProjectProductName>
+    <MileProjectVersion Condition="'$(MileProjectVersion)'==''">1.0.0.1</MileProjectVersion>
+    <MileProjectVersionTag Condition="'$(MileProjectVersionTag)'==''"></MileProjectVersionTag>
+    <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_MAJOR=$([System.Version]::Parse('$(MileProjectVersion)').Major);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
+    <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_MINOR=$([System.Version]::Parse('$(MileProjectVersion)').Minor);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
+    <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_BUILD=$([System.Version]::Parse('$(MileProjectVersion)').Build);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
+    <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_REVISION=$([System.Version]::Parse('$(MileProjectVersion)').Revision);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
+    <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_TAG=$(MileProjectVersionTag);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -103,6 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>_MILE_PROJECT_BUILD_GUID=$(MileProjectBuildGuid);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(MileProjectPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Platform)'=='Win32'">WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(MileProjectType)'=='ConsoleApplication'">_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(MileProjectType)'=='WindowsApplication'">_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -118,10 +142,19 @@
       <SubSystem Condition="'$(MileProjectType)'=='StaticLibrary'"></SubSystem>
     </Link>
     <ResourceCompile Condition="'$(MileProjectType)'!='StaticLibrary'">
+      <PreprocessorDefinitions>$(MileProjectPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(MileProjectType)'!='DynamicLibrary'">_MILE_PROJECT_MANIFEST_ID=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(MileProjectType)'=='DynamicLibrary'">_MILE_PROJECT_MANIFEST_ID=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(MileProjectManifestFile)'!=''">_MILE_PROJECT_MANIFEST_FILE=$([System.String]::Copy('$(MileProjectManifestFile)').Replace('\','\\'));%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir);$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ResourceCompile Condition="('$(MileProjectType)'!='StaticLibrary') And ('$(MileProjectUseProjectProperties)' == 'true')">
+      <PreprocessorDefinitions>_MILE_PROJECT_COMPANY_NAME=$(MileProjectCompanyName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MILE_PROJECT_FILE_DESCRIPTION=$(MileProjectFileDescription);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MILE_PROJECT_INTERNAL_NAME=$(MileProjectInternalName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MILE_PROJECT_LEGAL_COPYRIGHT=$(MileProjectLegalCopyright);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MILE_PROJECT_ORIGINAL_FILENAME=$(MileProjectOriginalFilename);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MILE_PROJECT_PRODUCT_NAME=$(MileProjectProductName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">

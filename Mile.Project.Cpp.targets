@@ -12,7 +12,7 @@
   <Target Name="MileProjectBuildManifestResources" BeforeTargets="BeforeResourceCompile">
     <ItemGroup Condition="'$(MileProjectType)'!='StaticLibrary'">
       <ResourceCompile Condition="'$(MileProjectManifestFile)'!=''" Include="$(MSBuildThisFileDirectory)Mile.Project.Manifest.rc" />
-      <ResourceCompile Condition="Exists('$(ProjectDir)Mile.Project.Properties.h')" Include="$(MSBuildThisFileDirectory)Mile.Project.Version.rc" />
+      <ResourceCompile Condition="'$(MileProjectUseProjectProperties)' == 'true'" Include="$(MSBuildThisFileDirectory)Mile.Project.Version.rc" />
     </ItemGroup>
   </Target>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
