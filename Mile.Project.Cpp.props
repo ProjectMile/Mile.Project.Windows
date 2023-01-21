@@ -90,12 +90,11 @@
     <MileProjectOriginalFilename Condition="'$(MileProjectOriginalFilename)'==''">$(TargetName)$(TargetExt)</MileProjectOriginalFilename>
     <MileProjectProductName Condition="'$(MileProjectProductName)'==''">$(TargetName)</MileProjectProductName>
     <MileProjectVersion Condition="'$(MileProjectVersion)'==''">1.0.0.1</MileProjectVersion>
-    <MileProjectVersionTag Condition="'$(MileProjectVersionTag)'==''"></MileProjectVersionTag>
     <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_MAJOR=$([System.Version]::Parse('$(MileProjectVersion)').Major);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
     <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_MINOR=$([System.Version]::Parse('$(MileProjectVersion)').Minor);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
     <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_BUILD=$([System.Version]::Parse('$(MileProjectVersion)').Build);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
     <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_REVISION=$([System.Version]::Parse('$(MileProjectVersion)').Revision);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
-    <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_TAG=$(MileProjectVersionTag);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
+    <MileProjectPreprocessorDefinitions Condition="'$(MileProjectVersionTag)'!=''">MILE_PROJECT_VERSION_TAG=$(MileProjectVersionTag);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
