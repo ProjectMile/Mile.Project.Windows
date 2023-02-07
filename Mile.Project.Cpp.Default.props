@@ -45,6 +45,11 @@
       CreatePseudoConsole won't be linkable without this. 
     -->
     <_VC_Target_Library_Platform>Desktop</_VC_Target_Library_Platform>
+    <!--
+      Disable C++/WinRT Libs because we don't want to depend on any Windows
+      APIs imported from API Sets.
+    -->
+    <CppWinRTLibs>false</CppWinRTLibs>
   </PropertyGroup>
   <PropertyGroup Label="Globals" Condition="'$(MileProjectUseProjectProperties)' == 'true'">
     <MileProjectCompanyName Condition="'$(MileProjectCompanyName)'==''">TODO: Company Name</MileProjectCompanyName>
