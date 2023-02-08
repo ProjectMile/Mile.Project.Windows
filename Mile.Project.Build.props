@@ -27,6 +27,15 @@
     <IntermediateOutputPath>$(MileProjectObjectsPath)$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
     <BaseIntermediateOutputPath>$(IntermediateOutputPath)</BaseIntermediateOutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
+    <OutDirWasSpecified>false</OutDirWasSpecified>
+    <BaseOutputPath>$(MileProjectBinariesPath)$(Configuration)\$(Platform)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MileProjectObjectsPath)$(Configuration)\$(MSBuildProjectName.Split("_")[0])\$(Platform)\</BaseIntermediateOutputPath>
+    <OutputPath>$(BaseOutputPath)</OutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+    <GeneratedFilesDir>$(BaseIntermediateOutputPath)Generated Files\</GeneratedFilesDir>
+    <CompilerGeneratedFilesOutputPath>$(GeneratedFilesDir)</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
   <ItemGroup Label="NuGet" Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
     <ProjectCapability Include="PackageReferences" />
   </ItemGroup>
