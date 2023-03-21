@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  PROJECT:   Mouri Internal Library Essentials
+  FILE:      Mile.Project.NuGetPackaging.proj
+  PURPOSE:   Definition for NuGet Packaging Project
+
+  LICENSE:   The MIT License
+
+  DEVELOPER: Mouri_Naruto (Mouri_Naruto AT Outlook.com)
+-->
+<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputPath>$(MileProjectBinariesPath)$(MSBuildProjectName.Split("_")[0])\</OutputPath>
+    <IntermediateOutputPath>$(MileProjectObjectsPath)$(MSBuildProjectName.Split("_")[0])\</IntermediateOutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <OutputFileNamesWithoutVersion>true</OutputFileNamesWithoutVersion>
+    <PackageOutputPath>$(MileProjectOutputPath)</PackageOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.5.0"/>
+  </ItemGroup>
+</Project>
