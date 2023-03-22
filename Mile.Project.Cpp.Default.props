@@ -20,7 +20,6 @@
   <PropertyGroup Label="Globals" Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">
     <CppWinRTOptimized>true</CppWinRTOptimized>
     <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
-    <CppWinRTGenerateWindowsMetadata>true</CppWinRTGenerateWindowsMetadata>
     <!--
       Import all Windows Runtime metadata in Windows SDK. By default enable 
       C++/WinRT to include target platform winmds if we didn't override sdk
