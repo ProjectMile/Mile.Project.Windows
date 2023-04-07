@@ -3,6 +3,15 @@
 Configuration template for simplifying the definition of Visual Studio (MSBuild)
 C++ projects.
 
+## Usage
+
+You only need to contain this Git repository as submodule in you Git repository.
+
+There are some samples in
+https://github.com/ProjectMile/Mile.Project.Windows.Samples that demonstrate
+defining Visual Studio (MSBuild) C++ projects with Mile.Project.Windows. We 
+hope it can help you develop applications with Mile.Project.Windows.
+
 ## Available Options
 
 ### How to define the project type in the "Globals" label property group.
