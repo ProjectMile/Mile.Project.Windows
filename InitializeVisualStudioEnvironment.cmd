@@ -5,7 +5,7 @@
 @rem 
 @rem LICENSE:   The MIT License
 @rem 
-@rem DEVELOPER: Mouri_Naruto (Mouri_Naruto AT Outlook.com)
+@rem DEVELOPER: Kenji Mouri (KenjiMouri@outlook.jp)
 @rem 
 
 @echo off
