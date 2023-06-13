@@ -6,7 +6,7 @@
 
   LICENSE:   The MIT License
 
-  DEVELOPER: Kenji Mouri (KenjiMouri@outlook.jp)
+  DEVELOPER: MouriNaruto (KurikoMouri@outlook.jp)
 -->
 <Project Sdk="Microsoft.Build.NoTargets/3.7.0">
   <PropertyGroup>
