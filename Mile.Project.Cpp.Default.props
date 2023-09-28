@@ -12,7 +12,7 @@
   <PropertyGroup Label="Globals">
     <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
     <CleanImport>true</CleanImport>
     <MileProjectBuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</MileProjectBuildDate>
     <MileProjectPreprocessorDefinitions></MileProjectPreprocessorDefinitions>
@@ -66,16 +66,37 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+
     <ConfigurationType>Application</ConfigurationType>
     <ConfigurationType Condition="'$(MileProjectType)'=='DynamicLibrary'">DynamicLibrary</ConfigurationType>
     <ConfigurationType Condition="'$(MileProjectType)'=='StaticLibrary'">StaticLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <ConfigurationType Condition="'$(MileProjectType)'=='StaticLibraryForDriver'">StaticLibrary</ConfigurationType>
+    <ConfigurationType Condition="'$(MileProjectType)'=='WDMDriver'">Driver</ConfigurationType>
+    <ConfigurationType Condition="'$(MileProjectType)'=='KMDFDriver'">Driver</ConfigurationType>
+    <ConfigurationType Condition="'$(MileProjectType)'=='UMDFDriver'">DynamicLibrary</ConfigurationType>
+
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <PlatformToolset Condition="'$(MileProjectType)' == 'StaticLibraryForDriver'">WindowsKernelModeDriver10.0</PlatformToolset>
+    <PlatformToolset Condition="'$(MileProjectType)' == 'WDMDriver'">WindowsKernelModeDriver10.0</PlatformToolset>
+    <PlatformToolset Condition="'$(MileProjectType)' == 'KMDFDriver'">WindowsKernelModeDriver10.0</PlatformToolset>
+    <PlatformToolset Condition="'$(MileProjectType)' == 'UMDFDriver'">WindowsUserModeDriver10.0</PlatformToolset>
     <PlatformToolset Condition="'$(MileProjectUseClangCLToolset)' == 'true'">ClangCL</PlatformToolset>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
-    <CharacterSet>Unicode</CharacterSet>
+
     <UseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</UseDebugLibraries>
     <UseDebugLibraries Condition="'$(Configuration)'=='Release'">false</UseDebugLibraries>
     <WholeProgramOptimization Condition="'$(Configuration)'=='Release'">true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="('$(MileProjectType)'=='WDMDriver') Or ('$(MileProjectType)'=='KMDFDriver') Or ('$(MileProjectType)'=='UMDFDriver') Or ('$(MileProjectType)'=='StaticLibraryForDriver')">
+    <DriverType>KMDF</DriverType>
+    <DriverType Condition="'$(MileProjectType)' == 'WDMDriver'">WDM</DriverType>
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <DebuggerFlavor Condition="'$(MileProjectType)' == 'UMDFDriver'">DbgengRemoteDebugger</DebuggerFlavor>
+    <TargetVersion>Windows10</TargetVersion>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+    <UMDF_VERSION_MAJOR Condition="'$(MileProjectType)' == 'UMDFDriver'">2</UMDF_VERSION_MAJOR>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
 </Project>
