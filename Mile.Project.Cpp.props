@@ -10,8 +10,8 @@
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LinkIncremental Condition="'$(Configuration)'=='Debug'">true</LinkIncremental>
-    <LinkIncremental Condition="'$(Configuration)'=='Release'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)' == 'Debug'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)' == 'Release'">false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <IncludePath>$(MSBuildThisFileDirectory);$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -25,28 +25,28 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>_MILE_PROJECT_BUILD_DATE=$(MileProjectBuildDate);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions>$(MileProjectPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Platform)'=='Win32'">WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(MileProjectType)'=='ConsoleApplication'">_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(MileProjectType)'=='WindowsApplication'">_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(MileProjectType)'=='DynamicLibrary'">_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(MileProjectType)'=='StaticLibrary'">_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Platform)' == 'Win32'">WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(MileProjectType)' == 'ConsoleApplication'">_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(MileProjectType)' == 'WindowsApplication'">_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(MileProjectType)' == 'DynamicLibrary'">_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(MileProjectType)' == 'StaticLibrary'">_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem Condition="'$(MileProjectType)'=='ConsoleApplication'">Console</SubSystem>
-      <SubSystem Condition="'$(MileProjectType)'=='WindowsApplication'">Windows</SubSystem>
-      <SubSystem Condition="'$(MileProjectType)'=='DynamicLibrary'">Windows</SubSystem>
-      <SubSystem Condition="'$(MileProjectType)'=='StaticLibrary'"></SubSystem>
+      <SubSystem Condition="'$(MileProjectType)' == 'ConsoleApplication'">Console</SubSystem>
+      <SubSystem Condition="'$(MileProjectType)' == 'WindowsApplication'">Windows</SubSystem>
+      <SubSystem Condition="'$(MileProjectType)' == 'DynamicLibrary'">Windows</SubSystem>
+      <SubSystem Condition="'$(MileProjectType)' == 'StaticLibrary'"></SubSystem>
     </Link>
-    <ResourceCompile Condition="'$(MileProjectType)'!='StaticLibrary'">
+    <ResourceCompile Condition="'$(MileProjectType)' != 'StaticLibrary'">
       <PreprocessorDefinitions>$(MileProjectPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(MileProjectType)'!='DynamicLibrary'">_MILE_PROJECT_MANIFEST_ID=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(MileProjectType)'=='DynamicLibrary'">_MILE_PROJECT_MANIFEST_ID=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(MileProjectManifestFile)'!=''">_MILE_PROJECT_MANIFEST_FILE=$([System.String]::Copy('$(MileProjectManifestFile)').Replace('\','\\'));%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(MileProjectType)' != 'DynamicLibrary'">_MILE_PROJECT_MANIFEST_ID=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(MileProjectType)' == 'DynamicLibrary'">_MILE_PROJECT_MANIFEST_ID=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(MileProjectManifestFile)' != ''">_MILE_PROJECT_MANIFEST_FILE=$([System.String]::Copy('$(MileProjectManifestFile)').Replace('\','\\'));%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir);$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <ResourceCompile Condition="('$(MileProjectType)'!='StaticLibrary') And ('$(MileProjectUseProjectProperties)' == 'true')">
+    <ResourceCompile Condition="('$(MileProjectType)' != 'StaticLibrary') And ('$(MileProjectUseProjectProperties)' == 'true')">
       <PreprocessorDefinitions>_MILE_PROJECT_COMPANY_NAME=$(MileProjectCompanyName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions>_MILE_PROJECT_FILE_DESCRIPTION=$(MileProjectFileDescription);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions>_MILE_PROJECT_INTERNAL_NAME=$(MileProjectInternalName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -58,7 +58,7 @@
   <ItemDefinitionGroup Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
-      <PreprocessorDefinitions Condition="'$(MileProjectType)'=='DynamicLibrary'">_WINRT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(MileProjectType)' == 'DynamicLibrary'">_WINRT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
@@ -71,14 +71,14 @@
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+  <ItemDefinitionGroup Condition="'$(Configuration)' == 'Debug'">
     <ClCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary Condition="'$(MileProjectEnableVCLTLSupport)' == 'true'">MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+  <ItemDefinitionGroup Condition="'$(Configuration)' == 'Release'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>MaxSpeed</Optimization>
@@ -93,12 +93,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <ControlFlowGuard Condition="'$(Configuration)'=='Release'">Guard</ControlFlowGuard>
-      <GuardEHContMetadata Condition="'$(Platform)'=='ARM64' Or '$(Platform)'=='x64'">true</GuardEHContMetadata>
-      <GuardSignedReturns Condition="'$(Platform)'=='ARM64'">true</GuardSignedReturns>
+      <ControlFlowGuard Condition="'$(Configuration)' == 'Release'">Guard</ControlFlowGuard>
+      <GuardEHContMetadata Condition="'$(Platform)' == 'ARM64' Or '$(Platform)' == 'x64'">true</GuardEHContMetadata>
+      <GuardSignedReturns Condition="'$(Platform)' == 'ARM64'">true</GuardSignedReturns>
     </ClCompile>
     <Link>
-      <CETCompat Condition="'$(Platform)'=='Win32' Or '$(Platform)'=='x64'">true</CETCompat>
+      <CETCompat Condition="'$(Platform)' == 'Win32' Or '$(Platform)' == 'x64'">true</CETCompat>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

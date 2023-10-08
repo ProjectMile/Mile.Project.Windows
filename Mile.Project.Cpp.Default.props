@@ -51,31 +51,31 @@
     <CppWinRTLibs>false</CppWinRTLibs>
   </PropertyGroup>
   <PropertyGroup Label="Globals" Condition="'$(MileProjectUseProjectProperties)' == 'true'">
-    <MileProjectCompanyName Condition="'$(MileProjectCompanyName)'==''">TODO: Company Name</MileProjectCompanyName>
-    <MileProjectFileDescription Condition="'$(MileProjectFileDescription)'==''">TODO: File Description</MileProjectFileDescription>
-    <MileProjectInternalName Condition="'$(MileProjectInternalName)'==''">$(TargetName)</MileProjectInternalName>
-    <MileProjectLegalCopyright Condition="'$(MileProjectLegalCopyright)'==''">© TODO: Company Name. All rights reserved.</MileProjectLegalCopyright>
-    <MileProjectOriginalFilename Condition="'$(MileProjectOriginalFilename)'==''">$(TargetName)$(TargetExt)</MileProjectOriginalFilename>
-    <MileProjectProductName Condition="'$(MileProjectProductName)'==''">$(TargetName)</MileProjectProductName>
-    <MileProjectVersion Condition="'$(MileProjectVersion)'==''">1.0.0.1</MileProjectVersion>
+    <MileProjectCompanyName Condition="'$(MileProjectCompanyName)' == ''">TODO: Company Name</MileProjectCompanyName>
+    <MileProjectFileDescription Condition="'$(MileProjectFileDescription)' == ''">TODO: File Description</MileProjectFileDescription>
+    <MileProjectInternalName Condition="'$(MileProjectInternalName)' == ''">$(TargetName)</MileProjectInternalName>
+    <MileProjectLegalCopyright Condition="'$(MileProjectLegalCopyright)' == ''">© TODO: Company Name. All rights reserved.</MileProjectLegalCopyright>
+    <MileProjectOriginalFilename Condition="'$(MileProjectOriginalFilename)' == ''">$(TargetName)$(TargetExt)</MileProjectOriginalFilename>
+    <MileProjectProductName Condition="'$(MileProjectProductName)' == ''">$(TargetName)</MileProjectProductName>
+    <MileProjectVersion Condition="'$(MileProjectVersion)' == ''">1.0.0.1</MileProjectVersion>
     <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_MAJOR=$([System.Version]::Parse('$(MileProjectVersion)').Major);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
     <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_MINOR=$([System.Version]::Parse('$(MileProjectVersion)').Minor);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
     <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_BUILD=$([System.Version]::Parse('$(MileProjectVersion)').Build);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
     <MileProjectPreprocessorDefinitions>MILE_PROJECT_VERSION_REVISION=$([System.Version]::Parse('$(MileProjectVersion)').Revision);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
-    <MileProjectPreprocessorDefinitions Condition="'$(MileProjectVersionTag)'!=''">MILE_PROJECT_VERSION_TAG=$(MileProjectVersionTag);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
+    <MileProjectPreprocessorDefinitions Condition="'$(MileProjectVersionTag)' != ''">MILE_PROJECT_VERSION_TAG=$(MileProjectVersionTag);$(MileProjectPreprocessorDefinitions)</MileProjectPreprocessorDefinitions>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <ConfigurationType Condition="'$(MileProjectType)'=='DynamicLibrary'">DynamicLibrary</ConfigurationType>
-    <ConfigurationType Condition="'$(MileProjectType)'=='StaticLibrary'">StaticLibrary</ConfigurationType>
+    <ConfigurationType Condition="'$(MileProjectType)' == 'DynamicLibrary'">DynamicLibrary</ConfigurationType>
+    <ConfigurationType Condition="'$(MileProjectType)' == 'StaticLibrary'">StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
     <PlatformToolset Condition="'$(MileProjectUseClangCLToolset)' == 'true'">ClangCL</PlatformToolset>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
     <CharacterSet>Unicode</CharacterSet>
-    <UseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</UseDebugLibraries>
-    <UseDebugLibraries Condition="'$(Configuration)'=='Release'">false</UseDebugLibraries>
-    <WholeProgramOptimization Condition="'$(Configuration)'=='Release'">true</WholeProgramOptimization>
+    <UseDebugLibraries Condition="'$(Configuration)' == 'Debug'">true</UseDebugLibraries>
+    <UseDebugLibraries Condition="'$(Configuration)' == 'Release'">false</UseDebugLibraries>
+    <WholeProgramOptimization Condition="'$(Configuration)' == 'Release'">true</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
 </Project>
