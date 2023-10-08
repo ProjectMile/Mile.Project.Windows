@@ -22,7 +22,8 @@
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard Condition="'$(PlatformToolset)' == 'v143'">stdcpp20</LanguageStandard>
+      <LanguageStandard Condition="'$(PlatformToolset)' == 'v142'">stdcpp17</LanguageStandard>
       <PreprocessorDefinitions>_MILE_PROJECT_BUILD_DATE=$(MileProjectBuildDate);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions>$(MileProjectPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Platform)' == 'Win32'">WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
