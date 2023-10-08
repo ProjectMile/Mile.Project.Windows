@@ -69,7 +69,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <ConfigurationType Condition="'$(MileProjectType)' == 'DynamicLibrary'">DynamicLibrary</ConfigurationType>
     <ConfigurationType Condition="'$(MileProjectType)' == 'StaticLibrary'">StaticLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>   
     <PlatformToolset Condition="'$(MileProjectUseClangCLToolset)' == 'true'">ClangCL</PlatformToolset>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
     <CharacterSet>Unicode</CharacterSet>
