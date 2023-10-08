@@ -12,6 +12,7 @@
   <PropertyGroup>
     <LinkIncremental Condition="'$(Configuration)' == 'Debug'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)' == 'Release'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(MileProjectUseWindowsDriverKit)' == 'true'">false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <IncludePath>$(MSBuildThisFileDirectory);$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -32,6 +33,7 @@
       <PreprocessorDefinitions Condition="'$(MileProjectType)' == 'DynamicLibrary'">_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(MileProjectType)' == 'StaticLibrary'">_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWChar_tAsBuiltInType Condition="'$(MileProjectUseWindowsDriverKit)' == 'true'">true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -55,6 +57,9 @@
       <PreprocessorDefinitions>_MILE_PROJECT_ORIGINAL_FILENAME=$(MileProjectOriginalFilename);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions>_MILE_PROJECT_PRODUCT_NAME=$(MileProjectProductName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
+    <DriverSign Condition="'$(MileProjectUseWindowsDriverKit)' == 'true'">
+      <FileDigestAlgorithm>sha256</FileDigestAlgorithm>
+    </DriverSign>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">
     <ClCompile>

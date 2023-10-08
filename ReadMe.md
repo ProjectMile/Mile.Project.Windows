@@ -40,6 +40,24 @@ hope it can help you develop applications with Mile.Project.Windows.
 <MileProjectType>StaticLibrary</MileProjectType>
 ```
 
+- If the project is a WDM driver project.
+
+```
+<MileProjectType>WDMDriver</MileProjectType>
+```
+
+- If the project is a KMDF driver project.
+
+```
+<MileProjectType>KMDFDriver</MileProjectType>
+```
+
+- If the project is a UMDF driver project.
+
+```
+<MileProjectType>UMDFDriver</MileProjectType>
+```
+
 ### How to define the manifest file in the "Globals" label property group.
 
 ```
@@ -76,4 +94,16 @@ hope it can help you develop applications with Mile.Project.Windows.
 
 ```
 <MileProjectUseClangCLToolset>true</MileProjectUseClangCLToolset>
+```
+
+### How to use Windows Driver Kit in non-driver projects
+
+```
+<MileProjectUseWindowsDriverKit>true</MileProjectUseWindowsDriverKit>
+```
+
+### How to define the project as kernel mode project in non-driver projects
+
+```
+<MileProjectUseKernelMode>true</MileProjectUseKernelMode>
 ```

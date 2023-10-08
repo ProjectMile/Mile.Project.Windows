@@ -10,13 +10,17 @@
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
-    <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
     <Keyword>Win32Proj</Keyword>
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
     <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
     <CleanImport>true</CleanImport>
     <MileProjectBuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</MileProjectBuildDate>
     <MileProjectPreprocessorDefinitions></MileProjectPreprocessorDefinitions>
+    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'WDMDriver">true</MileProjectUseWindowsDriverKit>
+    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'KMDFDriver">true</MileProjectUseWindowsDriverKit>
+    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'UMDFDriver">true</MileProjectUseWindowsDriverKit>
+    <MileProjectUseKernelMode Condition="'$(MileProjectType)' == 'WDMDriver">true</MileProjectUseKernelMode>
+    <MileProjectUseKernelMode Condition="'$(MileProjectType)' == 'KMDFDriver">true</MileProjectUseKernelMode>
   </PropertyGroup>
   <PropertyGroup Label="Globals" Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">
     <CppWinRTOptimized>true</CppWinRTOptimized>
@@ -77,6 +81,22 @@
     <UseDebugLibraries Condition="'$(Configuration)' == 'Debug'">true</UseDebugLibraries>
     <UseDebugLibraries Condition="'$(Configuration)' == 'Release'">false</UseDebugLibraries>
     <WholeProgramOptimization Condition="'$(Configuration)' == 'Release'">true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(MileProjectUseWindowsDriverKit)' == 'true'">
+    <ConfigurationType Condition="'$(MileProjectType)' == 'WDMDriver'">Driver</ConfigurationType>
+    <ConfigurationType Condition="'$(MileProjectType)' == 'KMDFDriver'">Driver</ConfigurationType>
+    <ConfigurationType Condition="'$(MileProjectType)' == 'UMDFDriver'">DynamicLibrary</ConfigurationType>
+    <PlatformToolset>WindowsApplicationForDrivers10.0</PlatformToolset>
+    <PlatformToolset Condition="'$(MileProjectType)' == 'UMDFDriver'">WindowsUserModeDriver10.0</PlatformToolset>
+    <PlatformToolset Condition="'$(MileProjectUseKernelMode)' == 'true'">WindowsKernelModeDriver10.0</PlatformToolset>
+    <DriverType Condition="'$(MileProjectType)' == 'WDMDriver'">WDM</DriverType>
+    <DriverType Condition="'$(MileProjectType)' == 'KMDFDriver'">KMDF</DriverType>
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <DebuggerFlavor Condition="'$(MileProjectUseKernelMode)' != 'true'">DbgengRemoteDebugger</DebuggerFlavor>
+    <TargetVersion>Windows10</TargetVersion>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+    <UMDF_VERSION_MAJOR Condition="'$(MileProjectUseKernelMode)' != 'true'">2</UMDF_VERSION_MAJOR>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
 </Project>
