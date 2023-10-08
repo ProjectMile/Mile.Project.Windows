@@ -16,11 +16,11 @@
     <CleanImport>true</CleanImport>
     <MileProjectBuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</MileProjectBuildDate>
     <MileProjectPreprocessorDefinitions></MileProjectPreprocessorDefinitions>
-    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'WDMDriver">true</MileProjectUseWindowsDriverKit>
-    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'KMDFDriver">true</MileProjectUseWindowsDriverKit>
-    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'UMDFDriver">true</MileProjectUseWindowsDriverKit>
-    <MileProjectUseKernelMode Condition="'$(MileProjectType)' == 'WDMDriver">true</MileProjectUseKernelMode>
-    <MileProjectUseKernelMode Condition="'$(MileProjectType)' == 'KMDFDriver">true</MileProjectUseKernelMode>
+    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'WDMDriver'">true</MileProjectUseWindowsDriverKit>
+    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'KMDFDriver'">true</MileProjectUseWindowsDriverKit>
+    <MileProjectUseWindowsDriverKit Condition="'$(MileProjectType)' == 'UMDFDriver'">true</MileProjectUseWindowsDriverKit>
+    <MileProjectUseKernelMode Condition="'$(MileProjectType)' == 'WDMDriver'">true</MileProjectUseKernelMode>
+    <MileProjectUseKernelMode Condition="'$(MileProjectType)' == 'KMDFDriver'">true</MileProjectUseKernelMode>
   </PropertyGroup>
   <PropertyGroup Label="Globals" Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">
     <CppWinRTOptimized>true</CppWinRTOptimized>
