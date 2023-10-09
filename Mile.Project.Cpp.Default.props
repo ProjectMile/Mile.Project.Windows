@@ -89,14 +89,14 @@
     <PlatformToolset>WindowsApplicationForDrivers10.0</PlatformToolset>
     <PlatformToolset Condition="'$(MileProjectType)' == 'UMDFDriver'">WindowsUserModeDriver10.0</PlatformToolset>
     <PlatformToolset Condition="'$(MileProjectUseKernelMode)' == 'true'">WindowsKernelModeDriver10.0</PlatformToolset>
+    <DriverType Condition="'$(MileProjectUseKernelMode)' == 'true'">KMDF</DriverType>
     <DriverType Condition="'$(MileProjectType)' == 'WDMDriver'">WDM</DriverType>
-    <DriverType Condition="'$(MileProjectType)' == 'KMDFDriver'">KMDF</DriverType>
     <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
     <DebuggerFlavor Condition="'$(MileProjectUseKernelMode)' != 'true'">DbgengRemoteDebugger</DebuggerFlavor>
     <TargetVersion>Windows10</TargetVersion>
     <DriverTargetPlatform>Universal</DriverTargetPlatform>
     <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
-    <UMDF_VERSION_MAJOR Condition="'$(MileProjectUseKernelMode)' != 'true'">2</UMDF_VERSION_MAJOR>
+    <UMDF_VERSION_MAJOR Condition="'$(MileProjectType)' == 'UMDFDriver'">2</UMDF_VERSION_MAJOR>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
 </Project>
