@@ -77,7 +77,7 @@
     <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>   
     <PlatformToolset Condition="'$(MileProjectUseClangCLToolset)' == 'true'">ClangCL</PlatformToolset>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet Condition="'$(CharacterSet)' == ''">NotSet</CharacterSet>
     <UseDebugLibraries Condition="'$(Configuration)' == 'Debug'">true</UseDebugLibraries>
     <UseDebugLibraries Condition="'$(Configuration)' == 'Release'">false</UseDebugLibraries>
     <WholeProgramOptimization Condition="'$(Configuration)' == 'Release'">true</WholeProgramOptimization>
