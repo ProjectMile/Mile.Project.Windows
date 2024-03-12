@@ -1,7 +1,7 @@
 ﻿## 
 ## PROJECT:   Mouri Internal Library Essentials
 ## FILE:      .editorconfig
-## PURPOSE:   The root .editorconfig file for C++ Project
+## PURPOSE:   The root .editorconfig file
 ## 
 ## LICENSE:   The MIT License
 ## 
@@ -37,12 +37,6 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 [*.rc]
-charset = utf-16le
-
-[Mile.Project.Properties.Template.h]
-charset = utf-16le
-
-[Mile.Project.Properties.h]
 charset = utf-16le
 
 [*.bat]
