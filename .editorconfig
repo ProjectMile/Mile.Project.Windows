@@ -1,4 +1,4 @@
-## 
+﻿## 
 ## PROJECT:   Mouri Internal Library Essentials
 ## FILE:      .editorconfig
 ## PURPOSE:   The root .editorconfig file for C++ Project
@@ -53,3 +53,10 @@ insert_final_newline = true
 charset = utf-8
 end_of_line = lf
 insert_final_newline = true
+
+[*.{asm,inc,s,nasm}]
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
