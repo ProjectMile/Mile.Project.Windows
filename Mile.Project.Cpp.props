@@ -110,7 +110,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <PackageReference Include="VC-LTL" Condition="'$(MileProjectEnableVCLTLSupport)' == 'true'">
-      <Version>5.0.9</Version>
+      <Version>5.0.10-Beta2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.CppWinRT" Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">
       <Version>2.0.240405.15</Version>
