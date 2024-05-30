@@ -112,6 +112,9 @@
     <PackageReference Include="VC-LTL" Condition="'$(MileProjectEnableVCLTLSupport)' == 'true'">
       <Version>5.1.1-Beta1</Version>
     </PackageReference>
+    <PackageReference Include="YY-Thunks" Condition="'$(MileProjectEnableYYThunksSupport)' == 'true'">
+      <Version>1.1.1-Beta1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Windows.CppWinRT" Condition="'$(MileProjectEnableCppWinRTSupport)' == 'true'">
       <Version>2.0.240405.15</Version>
     </PackageReference>

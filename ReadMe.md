@@ -84,6 +84,8 @@ hope it can help you develop applications with Mile.Project.Windows.
 <MileProjectEnableVCLTLSupport>true</MileProjectEnableVCLTLSupport>
 ```
 
+Note: YY-Thunks support will be enabled if you have enabled VC-LTL support.
+
 ### How to enable C++/WinRT support.
 
 ```
@@ -106,4 +108,10 @@ hope it can help you develop applications with Mile.Project.Windows.
 
 ```
 <MileProjectUseKernelMode>true</MileProjectUseKernelMode>
+```
+
+### How to enable YY-Thunks support.
+
+```
+<MileProjectEnableYYThunksSupport>true</MileProjectEnableYYThunksSupport>
 ```
