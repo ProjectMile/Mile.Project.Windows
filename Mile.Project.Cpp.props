@@ -13,6 +13,7 @@
     <LinkIncremental Condition="'$(Configuration)' == 'Debug'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)' == 'Release'">false</LinkIncremental>
     <LinkIncremental Condition="'$(MileProjectUseWindowsDriverKit)' == 'true'">false</LinkIncremental>
+    <Inf2CatUseLocalTime Condition="'$(MileProjectUseWindowsDriverKit)' == 'true'">true</Inf2CatUseLocalTime>
     <GenerateManifest>false</GenerateManifest>
     <IncludePath>$(MSBuildThisFileDirectory);$(IncludePath)</IncludePath>
   </PropertyGroup>
