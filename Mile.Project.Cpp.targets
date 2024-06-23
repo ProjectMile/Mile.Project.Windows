@@ -10,7 +10,7 @@
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Target Name="MileProjectBuildManifestResources" BeforeTargets="BeforeResourceCompile">
-    <ItemGroup Condition="'$(MileProjectType)' != 'StaticLibrary'">
+    <ItemGroup Condition="'$(MileProjectType)' != 'StaticLibrary' And '$(BuildingForX)'!='true'">
       <ResourceCompile Condition="'$(MileProjectManifestFile)' != ''" Include="$(MSBuildThisFileDirectory)Mile.Project.Manifest.rc" />
       <ResourceCompile Condition="'$(MileProjectUseProjectProperties)' == 'true'" Include="$(MSBuildThisFileDirectory)Mile.Project.Version.rc" />
     </ItemGroup>
