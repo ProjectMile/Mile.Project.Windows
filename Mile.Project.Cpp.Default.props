@@ -80,7 +80,7 @@
     <CharacterSet Condition="'$(CharacterSet)' == 'NotSet'">Unicode</CharacterSet>
     <UseDebugLibraries Condition="'$(Configuration)' == 'Debug'">true</UseDebugLibraries>
     <UseDebugLibraries Condition="'$(Configuration)' == 'Release'">false</UseDebugLibraries>
-    <WholeProgramOptimization Condition="'$(Configuration)' == 'Release'">true</WholeProgramOptimization>
+    <WholeProgramOptimization Condition="('$(Configuration)' == 'Release') And ('$(MileProjectType)' != 'StaticLibrary')">true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(MileProjectUseWindowsDriverKit)' == 'true'">
     <ConfigurationType Condition="'$(MileProjectType)' == 'WDMDriver'">Driver</ConfigurationType>
