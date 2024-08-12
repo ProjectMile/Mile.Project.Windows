@@ -111,7 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <PackageReference Include="VC-LTL" Condition="'$(MileProjectEnableVCLTLSupport)' == 'true'">
-      <Version>5.1.1-Beta2</Version>
+      <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="YY-Thunks" Condition="'$(MileProjectEnableYYThunksSupport)' == 'true'">
       <Version>1.1.2-Beta3</Version>
