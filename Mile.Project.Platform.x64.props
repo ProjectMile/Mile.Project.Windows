@@ -1,22 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--
-  PROJECT:   Mouri Internal Library Essentials
-  FILE:      Mile.Project.Platform.x64.props
-  PURPOSE:   Definition for Visual Studio C++ Project
-
-  LICENSE:   The MIT License
-
-  MAINTAINER: MouriNaruto (Kenji.Mouri@outlook.com)
--->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|x64">
-      <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-  </ItemGroup>
+  <Import Sdk="Mile.Project.Configurations" Version="1.0.1426" Project="Mile.Project.Platform.x64.props" />
 </Project>

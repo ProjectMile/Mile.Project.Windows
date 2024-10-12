@@ -1,19 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--
-   PROJECT:   Mouri Internal Library Essentials
-   FILE:      Mile.Project.Cpp.targets
-   PURPOSE:   Definition for Visual Studio C++ Project
-
-   LICENSE:   The MIT License
-
-   MAINTAINER: MouriNaruto (Kenji.Mouri@outlook.com)
--->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Target Name="MileProjectBuildManifestResources" BeforeTargets="BeforeResourceCompile">
-    <ItemGroup Condition="('$(MileProjectType)' != 'StaticLibrary') And ('$(BuildingForX)' != 'true')">
-      <ResourceCompile Condition="'$(MileProjectManifestFile)' != ''" Include="$(MSBuildThisFileDirectory)Mile.Project.Manifest.rc" />
-      <ResourceCompile Condition="'$(MileProjectUseProjectProperties)' == 'true'" Include="$(MSBuildThisFileDirectory)Mile.Project.Version.rc" />
-    </ItemGroup>
-  </Target>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Sdk="Mile.Project.Configurations" Version="1.0.1426" Project="Mile.Project.Cpp.targets" />
 </Project>

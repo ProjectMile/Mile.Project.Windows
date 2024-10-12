@@ -1,21 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--
-   PROJECT:   Mouri Internal Library Essentials
-   FILE:      Mile.Project.Wap.props
-   PURPOSE:   Definition for Visual Studio Windows Packaging Project
-
-   LICENSE:   The MIT License
-
-   MAINTAINER: MouriNaruto (Kenji.Mouri@outlook.com)
--->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
-    <WapProjPath Condition="'$(WapProjPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
-  </PropertyGroup>
-  <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
-  <PropertyGroup>
-    <!-- https://github.com/microsoft/Terminal/issues/700 -->
-    <DebuggerType>NativeOnly</DebuggerType>
-  </PropertyGroup>
+  <Import Sdk="Mile.Project.Configurations" Version="1.0.1426" Project="Mile.Project.Wap.props" />
 </Project>
